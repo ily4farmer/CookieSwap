@@ -226,7 +226,6 @@ export default function SwapForm() {
             showCommonBases
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
           />
-
           <AutoColumn justify="space-between">
             <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
               <SwapUI.SwitchButton
@@ -256,13 +255,11 @@ export default function SwapForm() {
             showCommonBases
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
           />
-
           {isAccessTokenSupported && (
             <Box>
               <AccessRisk inputCurrency={currencies[Field.INPUT]} outputCurrency={currencies[Field.OUTPUT]} />
             </Box>
           )}
-
           {isExpertMode && recipient !== null && !showWrap ? (
             <>
               <AutoRow justify="space-between" style={{ padding: '0 1rem' }}>
@@ -276,7 +273,6 @@ export default function SwapForm() {
               <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
             </>
           ) : null}
-
           {showWrap ? null : (
             <SwapUI.Info
               price={

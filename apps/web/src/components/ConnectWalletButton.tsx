@@ -8,8 +8,17 @@ import useAuth from 'hooks/useAuth'
 // eslint-disable-next-line import/extensions
 import { useActiveHandle } from 'hooks/useEagerConnect.bmp.ts'
 import { useMemo, useState } from 'react'
+import styled from 'styled-components'
 import { useConnect } from 'wagmi'
 import Trans from './Trans'
+
+const ButtonCustom = styled(Button)`
+  /* orange */
+
+  background: #fc8211;
+  border-radius: 12px;
+  box-shadow: none;
+`
 
 const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
   const handleActive = useActiveHandle()
@@ -36,9 +45,9 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
 
   return (
     <>
-      <Button onClick={handleClick} {...props}>
+      <ButtonCustom onClick={handleClick} {...props}>
         {children || <Trans>Connect Wallet</Trans>}
-      </Button>
+      </ButtonCustom>
       <WalletModalV2
         docText={t('Learn How to Connect')}
         docLink={docLink}

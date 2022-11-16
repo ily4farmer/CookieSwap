@@ -1,5 +1,5 @@
 import { Currency, Pair } from '@pancakeswap/sdk'
-import { Button, ChevronDownIcon, Text, useModal, Flex, Box, NumericalInput, CopyButton } from '@pancakeswap/uikit'
+import { Button, ChevronDownIcon, useModal, Flex, Box, NumericalInput, CopyButton } from '@pancakeswap/uikit'
 import styled, { css } from 'styled-components'
 import { isAddress } from 'utils'
 import { useTranslation } from '@pancakeswap/localization'
@@ -52,8 +52,8 @@ const InputPanel = styled.div`
   z-index: 1;
 `
 const Container = styled.div<{ zapStyle?: ZapStyle; error?: boolean }>`
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.input};
+  border-radius: 12px;
+  background-color: #f4f6f9;
   box-shadow: ${({ theme, error }) => theme.shadows[error ? 'warning' : 'inset']};
   ${({ zapStyle }) =>
     !!zapStyle &&
@@ -67,6 +67,20 @@ const Overlay = styled.div`
   inset: 0;
   opacity: 0.6;
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
+`
+
+const Text = styled.span`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+
+  letter-spacing: 0.01em;
+
+  /* black */
+
+  color: #29221f;
+  text-transform: uppercase;
 `
 
 type ZapStyle = 'noZap' | 'zap'
@@ -163,11 +177,11 @@ export default function CurrencyInputPanel({
                 <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '8px' }} />
               ) : null}
               {pair ? (
-                <Text id="pair" bold>
+                <Text id="pair">
                   {pair?.token0.symbol}:{pair?.token1.symbol}
                 </Text>
               ) : (
-                <Text id="pair" bold>
+                <Text id="pair">
                   {(currency && currency.symbol && currency.symbol.length > 20
                     ? `${currency.symbol.slice(0, 4)}...${currency.symbol.slice(
                         currency.symbol.length - 5,
@@ -204,12 +218,7 @@ export default function CurrencyInputPanel({
           ) : null}
         </Flex>
         {account && (
-          <Text
-            onClick={!disabled && onMax}
-            color="textSubtle"
-            fontSize="14px"
-            style={{ display: 'inline', cursor: 'pointer' }}
-          >
+          <Text onClick={!disabled && onMax} color="textSubtle" style={{ display: 'inline', cursor: 'pointer' }}>
             {!hideBalance && !!currency
               ? t('Balance: %balance%', { balance: selectedCurrencyBalance?.toSignificant(6) ?? t('Loading') })
               : ' -'}
@@ -232,9 +241,7 @@ export default function CurrencyInputPanel({
           </LabelRow>
           <InputRow selected={disableCurrencySelect}>
             {!!currency && showBUSD && Number.isFinite(amountInDollar) && (
-              <Text fontSize="12px" color="textSubtle" mr="12px">
-                ~{formatNumber(amountInDollar)} USD
-              </Text>
+              <Text color="textSubtle">~{formatNumber(amountInDollar)} USD</Text>
             )}
             {account && currency && selectedCurrencyBalance?.greaterThan(0) && !disabled && label !== 'To' && (
               <Flex alignItems="right" justifyContent="right">

@@ -4,9 +4,24 @@ import { SvgProps } from "../types";
 
 const Icon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
-    <Svg viewBox="0 0 24 24" {...props}>
-      <path d="M11 5V16.17L6.11997 11.29C5.72997 10.9 5.08997 10.9 4.69997 11.29C4.30997 11.68 4.30997 12.31 4.69997 12.7L11.29 19.29C11.68 19.68 12.31 19.68 12.7 19.29L19.29 12.7C19.68 12.31 19.68 11.68 19.29 11.29C18.9 10.9 18.27 10.9 17.88 11.29L13 16.17V5C13 4.45 12.55 4 12 4C11.45 4 11 4.45 11 5Z" />
-    </Svg>
+    <svg width={14} height={14} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g
+        clipPath="url(#prefix__clip0_275_1086)"
+        stroke="#A099A4"
+        strokeWidth={1.1}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M13 9.727l-2.182 2.182-2.182-2.182" />
+        <path d="M7.545 2.09h1.091a2.182 2.182 0 012.182 2.183v7.636M1 4.273L3.182 2.09l2.182 2.182" />
+        <path d="M6.455 11.91H5.364a2.182 2.182 0 01-2.182-2.183V2.091" />
+      </g>
+      <defs>
+        <clipPath id="prefix__clip0_275_1086">
+          <path fill="#fff" transform="rotate(90 6.545 7)" d="M0 0h13.091v13.091H0z" />
+        </clipPath>
+      </defs>
+    </svg>
   );
 };
 

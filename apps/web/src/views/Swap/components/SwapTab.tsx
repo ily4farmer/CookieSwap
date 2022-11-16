@@ -11,19 +11,22 @@ export enum SwapType {
   STABLE_SWAP,
 }
 
+const ButtonMenuItemCustom = styled(ButtonMenuItem)`
+  border-radius: 0%;
+  border-top-left-radius: 12px;
+`
+
 const Wrapper = styled.div`
   & > div {
     width: 100%;
-    background-color: ${({ theme }) => theme.colors.input};
+    /* background-color: ${({ theme }) => theme.colors.input}; */
     border: 0;
   }
   & button {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-  }
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.input};
-    border-radius: 20px 20px 0 0;
   }
 `
 
@@ -46,15 +49,16 @@ export default function SwapTab({ children }) {
             }}
           >
             {[t('Swap'), t('StableSwap')].map((content, idx) => (
-              <ButtonMenuItem
+              <ButtonMenuItemCustom
                 key={content}
                 style={{
-                  color: idx === swapTypeState ? theme.colors.text : theme.colors.textSubtle,
-                  backgroundColor: idx === swapTypeState ? theme.card.background : theme.colors.input,
+                  borderRadius: '0',
+                  color: '#29221F',
+                  backgroundColor: idx === swapTypeState ? '#fff' : '#F4F6F9',
                 }}
               >
                 {content}
-              </ButtonMenuItem>
+              </ButtonMenuItemCustom>
             ))}
           </ButtonMenu>
         </Wrapper>

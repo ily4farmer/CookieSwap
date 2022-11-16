@@ -9,7 +9,7 @@ type SwapInfoType = {
 };
 
 export const SwapInfoLabel = (props: PropsWithChildren<TextProps>) => (
-  <Text fontSize="12px" bold color="secondary" {...props} />
+  <Text fontSize="12px" bold={false} color="#6D6866" {...props} />
 );
 
 export const SwapInfo = ({ allowedSlippage, price }: SwapInfoType) => {
@@ -22,7 +22,7 @@ export const SwapInfo = ({ allowedSlippage, price }: SwapInfoType) => {
       <RowBetween alignItems="center">
         <SwapInfoLabel>{t("Slippage Tolerance")}</SwapInfoLabel>
         {isMounted && (
-          <Text bold color="primary">
+          <Text bold={false} fontSize="16px" color="#FC8211">
             {allowedSlippage / 100}%
           </Text>
         )}
