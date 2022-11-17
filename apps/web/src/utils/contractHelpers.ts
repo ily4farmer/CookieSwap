@@ -84,7 +84,7 @@ import farmAuctionAbi from 'config/abi/farmAuction.json'
 import anniversaryAchievementAbi from 'config/abi/anniversaryAchievement.json'
 import nftMarketAbi from 'config/abi/nftMarket.json'
 import nftSaleAbi from 'config/abi/nftSale.json'
-import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
+// import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import potteryVaultAbi from 'config/abi/potteryVaultAbi.json'
 import potteryDrawAbi from 'config/abi/potteryDrawAbi.json'
@@ -335,9 +335,9 @@ export const getNftMarketContract = (signer?: Signer | Provider) => {
 export const getNftSaleContract = (signer?: Signer | Provider) => {
   return getContract({ abi: nftSaleAbi, address: getNftSaleAddress(), signer }) as NftSale
 }
-export const getPancakeSquadContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: pancakeSquadAbi, address: getPancakeSquadAddress(), signer }) as PancakeSquad
-}
+// export const getPancakeSquadContract = (signer?: Signer | Provider) => {
+//   return getContract({ abi: pancakeSquadAbi, address: getPancakeSquadAddress(), signer }) as PancakeSquad
+// }
 export const getErc721CollectionContract = (signer?: Signer | Provider, address?: string) => {
   return getContract({ abi: erc721CollectionAbi, address, signer }) as Erc721collection
 }
