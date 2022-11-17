@@ -45,7 +45,7 @@ import {
   getNftMarketContract,
   getNftSaleContract,
   getPancakeBunniesContract,
-  getPancakeSquadContract,
+  // getPancakeSquadContract,
   getPointCenterIfoContract,
   getPotteryDrawContract,
   getPotteryVaultContract,
@@ -260,10 +260,10 @@ export const useNftSaleContract = () => {
   return useMemo(() => getNftSaleContract(signer), [signer])
 }
 
-export const usePancakeSquadContract = () => {
-  const { data: signer } = useSigner()
-  return useMemo(() => getPancakeSquadContract(signer), [signer])
-}
+// export const usePancakeSquadContract = () => {
+//   const { data: signer } = useSigner()
+//   return useMemo(() => getPancakeSquadContract(signer), [signer])
+// }
 
 export const useFarmAuctionContract = (withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
