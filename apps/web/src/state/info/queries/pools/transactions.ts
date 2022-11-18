@@ -48,6 +48,8 @@ const fetchPoolTransactions = async (
   address: string,
 ): Promise<{ data?: Transaction[]; error: boolean }> => {
   try {
+    console.log(1);
+    
     const data = await getMultiChainQueryEndPointWithStableSwap(chainName).request<TransactionResults>(
       POOL_TRANSACTIONS,
       {

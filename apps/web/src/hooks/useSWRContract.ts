@@ -114,7 +114,8 @@ export function useSWRContract<
 >(key?: UseSWRContractKey<T, N> | null, config: SWRConfiguration<Data, Error> = {}) {
   const { contract, methodName, params } = getContractKey(key) || {}
   const serializedKeys = useMemo(() => serializesContractKey(key), [key])
-
+  console.log(serializedKeys);
+  
   return useSWR<Data, Error>(
     serializedKeys,
     async () => {
