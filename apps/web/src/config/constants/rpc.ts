@@ -1,7 +1,5 @@
 export const BSC_RPC_URLS = [
-  'https://bsc-dataseed1.ninicoin.io',
-  'https://bsc-dataseed1.defibit.io',
-  'https://bsc-dataseed.binance.org',
+  'http://127.0.0.1:8545/',
 ]
 
 export const BSC_TESTNET_RPC_URLS = [

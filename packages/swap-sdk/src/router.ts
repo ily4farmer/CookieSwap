@@ -47,7 +47,7 @@ export interface SwapParameters {
   /**
    * The arguments to pass to the method, all hex encoded.
    */
-  args: (string | string[])[]
+   args: (string | string[] | boolean)[]
   /**
    * The amount of wei to send in hex.
    */
@@ -95,26 +95,26 @@ export abstract class Router {
     const useFeeOnTransfer = Boolean(options.feeOnTransfer)
 
     let methodName: string
-    let args: (string | string[])[]
+    let args: (string | string[] | boolean)[]
     let value: string
     switch (trade.tradeType) {
       case TradeType.EXACT_INPUT:
         if (etherIn) {
           methodName = useFeeOnTransfer ? 'swapExactETHForTokensSupportingFeeOnTransferTokens' : 'swapExactETHForTokens'
           // (uint amountOutMin, address[] calldata path, address to, uint deadline)
-          args = [amountOut, path, to, deadline]
+          args = [amountOut, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = amountIn
         } else if (etherOut) {
           methodName = useFeeOnTransfer ? 'swapExactTokensForETHSupportingFeeOnTransferTokens' : 'swapExactTokensForETH'
           // (uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
-          args = [amountIn, amountOut, path, to, deadline]
+          args = [amountIn, amountOut, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = ZERO_HEX
         } else {
           methodName = useFeeOnTransfer
             ? 'swapExactTokensForTokensSupportingFeeOnTransferTokens'
             : 'swapExactTokensForTokens'
           // (uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
-          args = [amountIn, amountOut, path, to, deadline]
+          args = [amountIn, amountOut, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = ZERO_HEX
         }
         break
@@ -123,17 +123,17 @@ export abstract class Router {
         if (etherIn) {
           methodName = 'swapETHForExactTokens'
           // (uint amountOut, address[] calldata path, address to, uint deadline)
-          args = [amountOut, path, to, deadline]
+          args = [amountOut, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = amountIn
         } else if (etherOut) {
           methodName = 'swapTokensForExactETH'
           // (uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
-          args = [amountOut, amountIn, path, to, deadline]
+          args = [amountOut, amountIn, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = ZERO_HEX
         } else {
           methodName = 'swapTokensForExactTokens'
           // (uint amountOut, uint amountInMax, address[] calldata path, address to, uint deadline)
-          args = [amountOut, amountIn, path, to, deadline]
+          args = [amountOut, amountIn, path, to, deadline, true] // LAST ARG - IS FEE ENABLED
           value = ZERO_HEX
         }
         break

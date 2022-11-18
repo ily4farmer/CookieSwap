@@ -1,5 +1,21 @@
 [
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_factory",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_WETH",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
     "inputs": [],
     "name": "WETH",
     "outputs": [
@@ -9,7 +25,7 @@
         "type": "address"
       }
     ],
-    "stateMutability": "pure",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -140,7 +156,7 @@
         "type": "address"
       }
     ],
-    "stateMutability": "pure",
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -159,6 +175,11 @@
         "internalType": "uint256",
         "name": "reserveOut",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "getAmountIn",
@@ -188,6 +209,11 @@
         "internalType": "uint256",
         "name": "reserveOut",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "getAmountOut",
@@ -212,6 +238,11 @@
         "internalType": "address[]",
         "name": "path",
         "type": "address[]"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "getAmountsIn",
@@ -236,6 +267,11 @@
         "internalType": "address[]",
         "name": "path",
         "type": "address[]"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "getAmountsOut",
@@ -653,6 +689,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapETHForExactTokens",
@@ -687,6 +728,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactETHForTokens",
@@ -721,6 +767,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactETHForTokensSupportingFeeOnTransferTokens",
@@ -754,6 +805,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactTokensForETH",
@@ -793,6 +849,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactTokensForETHSupportingFeeOnTransferTokens",
@@ -826,6 +887,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactTokensForTokens",
@@ -865,6 +931,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
@@ -898,6 +969,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapTokensForExactETH",
@@ -937,6 +1013,11 @@
         "internalType": "uint256",
         "name": "deadline",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isFeeEnabled",
+        "type": "bool"
       }
     ],
     "name": "swapTokensForExactTokens",
@@ -949,5 +1030,9 @@
     ],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
 ]
