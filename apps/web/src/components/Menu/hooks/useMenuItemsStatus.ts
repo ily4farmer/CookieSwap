@@ -9,28 +9,30 @@ import { useCompetitionStatus } from './useCompetitionStatus'
 // import { useVotingStatus } from './useVotingStatus'
 
 export const useMenuItemsStatus = (): Record<string, string> => {
-  const currentBlock = useChainCurrentBlock(ChainId.BSC)
-  const activeIfo = useActiveIfoWithBlocks()
-  const competitionStatus = useCompetitionStatus()
+  // const currentBlock = useChainCurrentBlock(ChainId.BSC)
+  // const activeIfo = useActiveIfoWithBlocks()
+  // const competitionStatus = useCompetitionStatus()
   // const potteryStatus = usePotteryStatus()
   // const votingStatus = useVotingStatus()
   console.log(222);
   
-  const ifoStatus =
-    currentBlock && activeIfo && activeIfo.endBlock > currentBlock
-      ? getStatus(currentBlock, activeIfo.startBlock, activeIfo.endBlock)
-      : null
+  // const ifoStatus =
+  //   currentBlock && activeIfo && activeIfo.endBlock > currentBlock
+  //     ? getStatus(currentBlock, activeIfo.startBlock, activeIfo.endBlock)
+  //  
+  
+  return {}
 
-  return useMemo(() => {
-    return {
-      '/competition': competitionStatus,
-      // '/ifo': ifoStatus === 'coming_soon' ? 'soon' : ifoStatus,
-      // ...(potteryStatus === PotteryDepositStatus.BEFORE_LOCK && {
-      //   '/pottery': 'pot_open',
-      // }),
-      // ...(votingStatus && {
-      //   '/voting': 'vote_now',
-      // }),
-    }
-  }, [competitionStatus])
+  // return useMemo(() => {
+  //   return {
+  //     '/competition': competitionStatus,
+  //     // '/ifo': ifoStatus === 'coming_soon' ? 'soon' : ifoStatus,
+  //     // ...(potteryStatus === PotteryDepositStatus.BEFORE_LOCK && {
+  //     //   '/pottery': 'pot_open',
+  //     // }),
+  //     // ...(votingStatus && {
+  //     //   '/voting': 'vote_now',
+  //     // }),
+  //   }
+  // }, [competitionStatus])
 }
