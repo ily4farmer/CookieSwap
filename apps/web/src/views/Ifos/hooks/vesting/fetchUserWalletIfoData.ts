@@ -25,6 +25,8 @@ export interface VestingData {
 }
 
 export const fetchUserWalletIfoData = async (ifo: Ifo, account: string): Promise<VestingData> => {
+  console.log(30);
+  
   const { address } = ifo
   let userVestingData = {
     vestingStartTime: 0,

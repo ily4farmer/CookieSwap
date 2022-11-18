@@ -33,6 +33,8 @@ const evmNativeStableLpMap = {
 }
 
 export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
+  console.log(31);
+  
   const tokenDividerFixed = FixedNumber.from(getFullDecimalMultiplier(decimals))
   return balance.divUnsafe(tokenDividerFixed)
 }
@@ -56,6 +58,8 @@ export async function farmV2FetchFarms({
   totalRegularAllocPoint,
   totalSpecialAllocPoint,
 }: FetchFarmsParams) {
+  console.log(32);
+  
   const stableFarms = farms.filter(isStableFarm)
 
   const [stableFarmsResults, poolInfos, lpDataResults] = await Promise.all([
@@ -77,6 +81,7 @@ export async function farmV2FetchFarms({
 
   const farmsData = farms.map((farm, index) => {
     try {
+      console.log(33);
       return {
         ...farm,
         ...(stableFarmsDataMap[farm.pid]
@@ -163,6 +168,7 @@ const masterChefV2Abi = [
 ]
 
 const masterChefFarmCalls = (farm: SerializedFarmConfig, masterChefAddress: string) => {
+  console.log(34);
   const { pid } = farm
 
   return pid || pid === 0
@@ -181,6 +187,8 @@ export const fetchMasterChefData = async (
   masterChefAddress: string,
 ): Promise<any[]> => {
   try {
+    console.log(35);
+    
     const masterChefCalls = farms.map((farm) => masterChefFarmCalls(farm, masterChefAddress))
     const masterChefAggregatedCalls = masterChefCalls.filter((masterChefCall) => masterChefCall !== null) as Call[]
 
@@ -215,6 +223,8 @@ export const fetchMasterChefV2Data = async ({
   masterChefAddress: string
 }) => {
   try {
+    console.log(36);
+    
     const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [cakePerBlock]] = await multicallv2<
       [[BigNumber], [BigNumber], [BigNumber], [BigNumber]]
     >({
@@ -262,6 +272,8 @@ type FormatStableFarmResponse = {
 }
 
 const formatStableFarm = (stableFarmData: StableLpData): FormatStableFarmResponse => {
+  console.log(37);
+  
   const [balance1, balance2, _, _price1] = stableFarmData
   return {
     tokenBalanceLP: FixedNumber.from(balance1[0]),
@@ -283,6 +295,8 @@ const getStableFarmDynamicData = ({
   token0Decimals: number
   price1: BigNumber
 }) => {
+  console.log(38);
+  
   // Raw amount of token in the LP, including those not staked
   const tokenAmountTotal = getTokenAmount(tokenBalanceLP, token0Decimals)
   const quoteTokenAmountTotal = getTokenAmount(quoteTokenBalanceLP, token1Decimals)
@@ -332,6 +346,8 @@ type FormatClassicFarmResponse = {
 }
 
 const formatClassicFarmResponse = (farmData: ClassicLPData): FormatClassicFarmResponse => {
+  console.log(39);
+  
   const [tokenBalanceLP, quoteTokenBalanceLP, lpTokenBalanceMC, lpTotalSupply] = farmData
   return {
     tokenBalanceLP: FixedNumber.from(tokenBalanceLP[0]),
@@ -354,6 +370,8 @@ const getFarmAllocation = ({
   totalRegularAllocPoint,
   totalSpecialAllocPoint,
 }: FarmAllocationParams) => {
+  console.log(40);
+  
   const _allocPoint = allocPoint ? FixedNumber.from(allocPoint) : FIXED_ZERO
   const totalAlloc = isRegular ? totalRegularAllocPoint : totalSpecialAllocPoint
   const poolWeight =
@@ -376,6 +394,8 @@ const getClassicFarmsDynamicData = ({
   token0Decimals: number
   token1Decimals: number
 }) => {
+  console.log(41);
+  
   // Raw amount of token in the LP, including those not staked
   const tokenAmountTotal = getTokenAmount(tokenBalanceLP, token0Decimals)
   const quoteTokenAmountTotal = getTokenAmount(quoteTokenBalanceLP, token1Decimals)

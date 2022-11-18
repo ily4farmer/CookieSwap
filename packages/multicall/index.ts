@@ -14,6 +14,8 @@ export const multicallAddresses = {
 }
 
 export const getMulticallContract = (chainId: ChainId, provider: Provider) => {
+  console.log(52);
+  
   if (multicallAddresses[chainId]) {
     return new Contract(multicallAddresses[chainId], multicallAbi, provider)
   }
@@ -62,6 +64,8 @@ export type MultiCall = <T = any>(abi: any[], calls: Call[], chainId?: ChainId) 
 export function createMulticall<TProvider extends Provider>(
   provider: ({ chainId }: { chainId?: number | undefined }) => TProvider,
 ) {
+  console.log(60);
+  
   const multicall: MultiCall = async (abi: any[], calls: Call[], chainId = ChainId.BSC) => {
     const multi = getMulticallContract(chainId, provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
@@ -83,7 +87,7 @@ export function createMulticall<TProvider extends Provider>(
     const multi = getMulticallContract(chainId, _provider || provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
     const itf = new Interface(abi)
-
+    console.log(61);
     const calldata = calls.map((call) => ({
       target: call.address.toLowerCase(),
       callData: itf.encodeFunctionData(call.name, call.params),
@@ -99,6 +103,7 @@ export function createMulticall<TProvider extends Provider>(
   }
 
   const multicallv3 = async ({ calls, chainId = ChainId.BSC, allowFailure, overrides }: MulticallV3Params) => {
+    console.log(62);
     const multi = getMulticallContract(chainId, provider({ chainId }))
     if (!multi) throw new Error(`Multicall Provider missing for ${chainId}`)
     const _calls = calls.map(({ abi, address, name, params, allowFailure: _allowFailure }) => {

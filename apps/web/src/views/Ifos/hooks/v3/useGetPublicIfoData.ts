@@ -38,6 +38,7 @@ const formatVestingInfo = (pool) => ({
  * Gets all public data of an IFO
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
+  console.log(26);
   const { address, version, plannedStartTime } = ifo
   const cakePriceUsd = usePriceCakeBusd()
   const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
@@ -92,6 +93,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
 
   const fetchIfoData = useCallback(
     async (currentBlock: number) => {
+      console.log(27);
       const [
         startBlock,
         endBlock,

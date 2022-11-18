@@ -13,6 +13,7 @@ import { getStatus } from '../helpers'
  * Gets all public data of an IFO
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
+  console.log(17);
   const { address } = ifo
   const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
   const [state, setState] = useState({
@@ -37,11 +38,12 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   })
   const fetchIfoData = useCallback(
     async (currentBlock: number) => {
+      console.log(201);
       const ifoCalls = ['startBlock', 'endBlock', 'raisingAmount', 'totalAmount'].map((method) => ({
         address,
         name: method,
       }))
-
+      console.log(18);
       const [startBlock, endBlock, raisingAmount, totalAmount] = await multicallv2({ abi: ifoV1Abi, calls: ifoCalls })
 
       const startBlockNum = startBlock ? startBlock[0].toNumber() : 0

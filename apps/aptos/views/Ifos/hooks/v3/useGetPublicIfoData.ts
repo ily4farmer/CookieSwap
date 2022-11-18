@@ -74,6 +74,7 @@ export const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
       if (!pool.data || !resources.data || !resources.data[IFO_RESOURCE_ACCOUNT_TYPE_METADATA]) {
         return
       }
+      console.log(210);
 
       const { start_time, end_time, vesting_start_time } = resources.data[IFO_RESOURCE_ACCOUNT_TYPE_METADATA].data
       const startTime = +start_time

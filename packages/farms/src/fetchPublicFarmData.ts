@@ -41,6 +41,8 @@ const abi = [
 ]
 
 const fetchFarmCalls = (farm: SerializedFarmPublicData, masterChefAddress: string, vaultAddress?: string) => {
+  console.log(45);
+  
   const { lpAddress, token, quoteToken } = farm
   return [
     // Balance of token in the LP contract
@@ -76,6 +78,7 @@ export const fetchPublicFarmsData = async (
   masterChefAddress: string,
 ): Promise<any[]> => {
   try {
+    console.log(46);
     const farmCalls = farms.flatMap((farm) => fetchFarmCalls(farm, masterChefAddress, nonBSCVaultAddresses[chainId]))
     const chunkSize = farmCalls.length / farms.length
     const farmMultiCallResult = await multicall({ abi, calls: farmCalls, chainId })

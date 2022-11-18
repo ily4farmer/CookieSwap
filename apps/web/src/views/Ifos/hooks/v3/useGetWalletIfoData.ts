@@ -46,6 +46,7 @@ const initialState = {
  * Gets all data from an IFO related to a wallet
  */
 const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
+  console.log(28);
   const [state, setState] = useState<WalletIfoState>(initialState)
   const dispatch = useAppDispatch()
   const credit = useIfoCredit()
@@ -77,6 +78,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
   }
 
   const fetchIfoData = useCallback(async () => {
+    console.log(29);
     const ifoCalls = ['viewUserInfo', 'viewUserOfferingAndRefundingAmountsForPools'].map((method) => ({
       address,
       name: method,

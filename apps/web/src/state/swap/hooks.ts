@@ -35,6 +35,8 @@ import fetchDerivedPriceData from './fetch/fetchDerivedPriceData'
 import { pairHasEnoughLiquidity } from './fetch/utils'
 
 export function useSwapState(): AppState['swap'] {
+  console.log(1);
+  
   return useSelector<AppState, AppState['swap']>((state) => state.swap)
 }
 
@@ -51,6 +53,7 @@ const BAD_RECIPIENT_ADDRESSES: string[] = [
  * @param checksummedAddress address to check in the pairs and tokens
  */
 function involvesAddress(trade: Trade<Currency, Currency, TradeType>, checksummedAddress: string): boolean {
+  console.log(2);
   return (
     trade.route.path.some((token) => token.address === checksummedAddress) ||
     trade.route.pairs.some((pair) => pair.liquidityToken.address === checksummedAddress)
@@ -64,6 +67,7 @@ export function useSingleTokenSwapInfo(
   outputCurrencyId: string | undefined,
   outputCurrency: Currency | undefined,
 ): { [key: string]: number } {
+  console.log(3);
   const token0Address = getTokenAddress(inputCurrencyId)
   const token1Address = getTokenAddress(outputCurrencyId)
 
@@ -97,6 +101,7 @@ export function useDerivedSwapInfo(
   v2Trade: Trade<Currency, Currency, TradeType> | undefined
   inputError?: string
 } {
+  console.log(4);
   const { address: account } = useAccount()
   const { t } = useTranslation()
 
@@ -173,15 +178,18 @@ export function useDerivedSwapInfo(
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {
+  console.log(5);
   return typeof urlParam === 'string' && !Number.isNaN(parseFloat(urlParam)) ? urlParam : ''
 }
 
 function parseIndependentFieldURLParameter(urlParam: any): Field {
+  console.log(6);
   return typeof urlParam === 'string' && urlParam.toLowerCase() === 'output' ? Field.OUTPUT : Field.INPUT
 }
 
 const ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/
 function validatedRecipient(recipient: any): string | null {
+  console.log(7);
   if (typeof recipient !== 'string') return null
   const address = isAddress(recipient)
   if (address) return address
@@ -194,6 +202,7 @@ export function queryParametersToSwapState(
   nativeSymbol?: string,
   defaultOutputCurrency?: string,
 ): SwapState {
+  console.log(8);
   let inputCurrency = isAddress(parsedQs.inputCurrency) || (nativeSymbol ?? DEFAULT_INPUT_CURRENCY)
   let outputCurrency =
     typeof parsedQs.outputCurrency === 'string'
@@ -228,6 +237,7 @@ export function queryParametersToSwapState(
 export function useDefaultsFromURLSearch():
   | { inputCurrencyId: string | undefined; outputCurrencyId: string | undefined }
   | undefined {
+    console.log(10);
   const { chainId } = useActiveChainId()
   const dispatch = useAppDispatch()
   const native = useNativeCurrency()
@@ -271,6 +281,7 @@ export const useFetchPairPrices = ({
   timeWindow,
   currentSwapPrice,
 }: useFetchPairPricesParams) => {
+  console.log(11);
   const [pairId, setPairId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const pairData = useSelector(pairByDataIdSelector({ pairId, timeWindow }))

@@ -50,6 +50,8 @@ export function useSwapCallback(
   swapCalls: SwapCall[],
 ): { state: SwapCallbackState; callback: null | (() => Promise<string>); error: string | null } {
   const { account, chainId } = useActiveWeb3React()
+  console.log(1000);
+  
   const gasPrice = useGasPrice()
 
   const { t } = useTranslation()

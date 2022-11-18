@@ -33,6 +33,7 @@ const initialState = {
  * Gets all data from an IFO related to a wallet
  */
 const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
+  console.log(24);
   const [state, setState] = useState<WalletIfoState>(initialState)
 
   const { address, currency } = ifo

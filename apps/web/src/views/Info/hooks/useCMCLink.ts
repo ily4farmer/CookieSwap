@@ -10,6 +10,8 @@ const CMC_ENDPOINT = 'https://3rdparty-apis.coinmarketcap.com/v1/cryptocurrency/
  * @param address token address (all lowercase, checksummed are not supported by CMC)
  */
 const useCMCLink = (address: string): string | undefined => {
+  console.log(111);
+  
   const { data: cmcPageUrl } = useSWRImmutable(address ? ['cmcLink', address] : null, async () => {
     const response = await fetch(`${CMC_ENDPOINT}${address}`)
 

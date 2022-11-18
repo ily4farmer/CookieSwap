@@ -27,6 +27,8 @@ interface Options {
 }
 
 export async function getPairs(currencyPairs: CurrencyPair[], { provider, chainId }: Options): Promise<Pair[]> {
+  console.log(65);
+  
   const tokens: [Token | undefined, Token | undefined][] = currencyPairs.map(([currencyA, currencyB]) => [
     wrappedCurrency(currencyA, chainId),
     wrappedCurrency(currencyB, chainId),
@@ -76,6 +78,8 @@ export async function getPairs(currencyPairs: CurrencyPair[], { provider, chainI
 }
 
 function getPairAddress([tokenA, tokenB]: [Token | undefined, Token | undefined]): string {
+  console.log(66);
+  
   let addr = ''
   try {
     addr = tokenA && tokenB && !tokenA.equals(tokenB) ? Pair.getAddress(tokenA, tokenB) : ''

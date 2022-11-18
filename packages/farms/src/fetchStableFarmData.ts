@@ -37,6 +37,7 @@ export async function fetchStableFarmData(
   chainId = ChainId.BSC,
   multicallv2: MultiCallV2,
 ) {
+  console.log(48);
   const calls: Call[] = farms.flatMap((f) => [
     {
       address: f.stableSwapAddress,

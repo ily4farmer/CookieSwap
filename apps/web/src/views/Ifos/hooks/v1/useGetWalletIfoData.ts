@@ -30,6 +30,7 @@ const initialState = {
  * Gets all data from an IFO related to a wallet
  */
 const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
+  console.log(19);
   const [state, setState] = useState<WalletIfoState>(initialState)
 
   const { address, currency } = ifo
@@ -60,6 +61,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
   }
 
   const fetchIfoData = useCallback(async () => {
+    console.log(20);
     const ifoCalls = ['getOfferingAmount', 'userInfo', 'getRefundingAmount'].map((method) => ({
       address,
       name: method,

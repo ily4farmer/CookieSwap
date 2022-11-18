@@ -14,6 +14,7 @@ interface IfoMapResponse {
 }
 
 export const getAchievementTitle = (campaign: Campaign): TranslatableText => {
+  console.log(14);
   switch (campaign.type) {
     case 'ifo':
       return {
@@ -28,6 +29,7 @@ export const getAchievementTitle = (campaign: Campaign): TranslatableText => {
 }
 
 export const getAchievementDescription = (campaign: Campaign): TranslatableText => {
+  console.log(15);
   switch (campaign.type) {
     case 'ifo':
       return {
@@ -45,6 +47,7 @@ export const getAchievementDescription = (campaign: Campaign): TranslatableText 
  * Checks if a wallet is eligible to claim points from valid IFO's
  */
 export const getClaimableIfoData = async (account: string): Promise<Achievement[]> => {
+  console.log(16);
   const ifoCampaigns = ifosList.filter((ifoItem) => ifoItem.campaignId !== undefined)
 
   // Returns the claim status of every IFO with a campaign ID

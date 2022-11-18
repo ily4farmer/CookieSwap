@@ -16,6 +16,8 @@ export async function getStableSwapOutputAmount(
   inputAmount: CurrencyAmount<Currency>,
   { provider }: Options,
 ): Promise<CurrencyAmount<Currency>> {
+  console.log(70);
+  
   const { multicallv2 } = createMulticall(provider)
 
   const wrappedInputAmount = wrappedCurrencyAmount(inputAmount, inputAmount.currency.chainId)
@@ -36,6 +38,7 @@ export async function getStableSwapOutputAmount(
     name: 'get_dy',
     params: args,
   }
+  console.log(71);
   const result = await multicallv2<BigNumber[]>({
     abi: IStableSwapABI,
     calls: [call],
@@ -44,6 +47,7 @@ export async function getStableSwapOutputAmount(
       requireSuccess: true,
     },
   })
+  console.log(72);
 
   return CurrencyAmount.fromRawAmount(outputToken, result.toString())
 }
